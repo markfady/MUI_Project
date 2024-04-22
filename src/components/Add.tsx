@@ -12,7 +12,6 @@ const Add = () => {
     const CustomBox = styled(Box)({
         width:'400px',
         height:'280px',
-        background:'white',
         padding:50,
         borderRadius:5
       });
@@ -41,7 +40,7 @@ const Add = () => {
   aria-labelledby="modal-modal-title"
   aria-describedby="modal-modal-description"
 >
-  <CustomBox>
+  <CustomBox bgcolor={"background.default"} color={"text.primary"}>
     <Typography id="modal-modal-description" sx={{fontWeight:'bold',textAlign:'center' }} variant='h6' color={'grey'}>
     Create Post
     </Typography>

@@ -5,6 +5,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  PaletteMode,
   Switch,
 } from "@mui/material";
 import AddHomeIcon from "@mui/icons-material/AddHome";
@@ -14,10 +15,14 @@ import StoreIcon from "@mui/icons-material/Store";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-
+import LightModeIcon from '@mui/icons-material/LightMode';
 import ModeNightIcon from "@mui/icons-material/ModeNight";
 
-const Sidebar = () => {
+interface SidebarProps {
+  setMode: (mode: PaletteMode) => void;
+  mode: PaletteMode;
+}
+const Sidebar:React.FC<SidebarProps>= ({setMode,mode}) => {
   return (
     <Box p={2} flex={1} sx={{ display: { xs: "none", sm: "block" } }}>
         <Box position={"fixed"}> {/* fixed position acts as absolute so we must wrap the position inside the box to avoid this behavior with our feedbar*/}
@@ -81,9 +86,9 @@ const Sidebar = () => {
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <ModeNightIcon />
+              {mode==='light'?<ModeNightIcon/>:<LightModeIcon/>}
             </ListItemIcon>
-            <Switch />
+            <Switch onChange={()=>setMode(mode==='light'? "dark":"light")} /> {/*if you change me i will change the state to the opposite value , cause you changed me*/}
           </ListItemButton>
         </ListItem>
       </List>
